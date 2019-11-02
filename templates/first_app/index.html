@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
-    <title>First App</title>
-</head>
+    <head>
+        <title>First app is improving</title>
+        <link rel="stylesheet" type="text/css" href="{% static "assets/css/main.css" %}" />
+    </head>
 <body>
-    
-    <h1>Hello! This is an image from Django!</h1>
-    <img src={% static "images/test.jpeg" %}></img>
-
+    <h2>Here is the access records:</h2>
+    <div class="djangtwo">
+     {% if access_records %}
+     <table class="table">
+        <thead>
+            <tr>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </tr>
+        </thead>
+        {% for acc in access_records %}
+        <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+     </table>
+     {% else %}
+        <p>NO ACCESS RECORD FOUND!</p>
+    {% endif %}
+    </div>
 </body>
+
 </html>
