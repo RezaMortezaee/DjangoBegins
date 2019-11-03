@@ -1,4 +1,5 @@
 from django import forms
+from first_app.models import User
 from django.core import validators
 class FormName(forms.Form):
     name = forms.CharField()
@@ -8,8 +9,6 @@ class FormName(forms.Form):
     # botcatcher = forms.CharField(required=False,
     #                             widget=forms.HiddenInput,
     #                             validators=[validators.MaxLengthValidator(0)])
-
-
     def clean(self): 
         all_clean_data = super().clean()
         email = all_clean_data['email']
@@ -17,3 +16,10 @@ class FormName(forms.Form):
     
         if email != vmail:
             raise forms.ValidationError('Emails are not the same!')
+
+
+class NewuserForm(forms.ModelForm):
+    class Meta():
+        model= User
+        fields = '__all__'
+

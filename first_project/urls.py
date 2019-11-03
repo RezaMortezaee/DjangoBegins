@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.index),
     path('first_app/',include('first_app.urls')),
     path('admin/', admin.site.urls),
-    path('formpage/',views.show_form,name='form_name')
+    path('formpage/',views.show_form,name='form_name'),
+    path('signup/',views.users,name='signup')
 ]
